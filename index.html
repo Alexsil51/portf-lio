@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alex Gama Silva — Portfólio</title>
+  <meta name="description" content="Portfólio profissional de Alex Gama Silva — Professor Técnico e Técnico em Informática / Telecomunicações" />
+  <style>
+    :root{
+      --accent:#0b63a8;
+      --bg:#f7f9fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --maxw:980px;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg), #eef4fb 60%);
+      margin:0; color:#0b1720;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 16px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+    }
+    header{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      margin-bottom:22px;
+    }
+    .avatar{
+      width:110px; height:110px; border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),#1e9bd8);
+      display:flex; align-items:center; justify-content:center;
+      color:white; font-weight:700; font-size:28px;
+      box-shadow:0 8px 20px rgba(11,99,168,0.12);
+      flex:0 0 110px;
+    }
+    h1{margin:0; font-size:26px}
+    h2{margin:0;font-size:18px;color:var(--accent)}
+    .meta{color:var(--muted); margin-top:6px; font-size:14px}
+    main{display:grid; grid-template-columns: 1fr 340px; gap:20px;}
+    .card{
+      background:var(--card); border-radius:var(--radius); padding:18px;
+      box-shadow:0 6px 20px rgba(16,24,40,0.06);
+    }
+    .section{margin-bottom:14px}
+    .section h3{margin:0 0 10px 0; font-size:16px; color:#0b2b40}
+    p{margin:0 0 10px 0; color:#24323a; line-height:1.45}
+    ul{margin:0 0 10px 18px}
+    .skills{display:flex; gap:8px; flex-wrap:wrap}
+    .chip{background:#f1f5f9;padding:6px 10px;border-radius:999px;font-size:13px;color:#0b1720}
+    .experience-item{margin-bottom:12px}
+    .muted{color:var(--muted); font-size:13px}
+    .contact-list{display:flex; flex-direction:column; gap:8px}
+    a.button{
+      display:inline-block; text-decoration:none; background:var(--accent); color:white;
+      padding:10px 14px; border-radius:10px; font-weight:600; margin-top:8px;
+    }
+    footer{margin-top:18px; text-align:center; color:var(--muted); font-size:13px;}
+    @media (max-width:900px){
+      main{grid-template-columns: 1fr; }
+      .avatar{width:88px;height:88px;font-size:22px}
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="avatar" aria-hidden="true">AG</div>
+    <div>
+      <h1>Alex Gama Silva</h1>
+      <h2>Professor Técnico em Tecnologia • Técnico em Informática & Telecomunicações</h2>
+      <div class="meta">São Paulo, SP — (11) 95247-3590 — alexsil51@yahoo.com.br</div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="card section">
+        <h3>Resumo Profissional</h3>
+        <p>
+          Professor técnico com atuação no ensino médio integrado e subsequente (2022–atual),
+          com ampla experiência prática em infraestrutura, redes, administração de servidores e
+          aplicações corporativas. Experiência de suporte técnico e gestão de ambientes de TI em hotéis corporativos desde 2005, com administração de Data Centers, bancos de dados e automação.
+        </p>
+      </div>
+
+      <div class="card section">
+        <h3>Competências Técnicas</h3>
+        <div class="skills">
+          <span class="chip">Infraestrutura & Redes</span>
+          <span class="chip">Windows & Linux</span>
+          <span class="chip">SQL Server & Oracle</span>
+          <span class="chip">Office 365 / Power BI</span>
+          <span class="chip">Automação / Power Automate</span>
+          <span class="chip">IA aplicada / Prompts</span>
+        </div>
+        <ul>
+          <li>Montagem e manutenção de computadores e servidores.</li>
+          <li>Administração de redes cabeadas e Wi-Fi, monitoramento e diagnóstico.</li>
+          <li>Administração de bancos de dados e integração de sistemas empresariais.</li>
+        </ul>
+      </div>
+
+      <div class="card section">
+        <h3>Experiência Profissional</h3>
+
+        <div class="experience-item">
+          <strong>Professor do Ensino Técnico — Secretaria da Educação do Estado de São Paulo</strong>
+          <div class="muted">2024 – Atual</div>
+          <p>Ministração de disciplinas técnicas, desenvolvimento de planos de aula, metodologias ativas, avaliação e acompanhamento estudantil.</p>
+        </div>
+
+        <div class="experience-item">
+          <strong>Professor Eventual — Rede Estadual</strong>
+          <div class="muted">2022 – 2024</div>
+          <p>Substituição docente, adaptação rápida a turmas e conteúdos, manutenção da continuidade pedagógica.</p>
+        </div>
+
+        <div class="experience-item">
+          <strong>Técnico em Informática & Telecomunicações — Cia Transamerica de Hotéis</strong>
+          <div class="muted">10/2005 – Atual</div>
+          <p>Suporte técnico corporativo, administração de infraestrutura e data centers, implantação e manutenção de sistemas ERP/PMS/BI, gestão de O365, Power BI e automações.</p>
+        </div>
+      </div>
+
+      <div class="card section">
+        <h3>Formação</h3>
+        <ul>
+	  <li><strong>Tecnólogo em Análise e Desenvolvimento de Sistemas</strong> — Centro Universitário SENAC São Paulo.</li>
+          <li><strong>Tecnólogo em Redes de Computadores</strong> — Centro Universitário SENAC São Paulo.</li>
+          <li><strong>Técnico em Informática</strong> — SENAC São Paulo.</li>
+          <li><strong>Técnico em Eletrotécnica</strong> — Escola Nossa Senhora de Fátima.</li>
+        </ul>
+      </div>
+
+      <div class="card section">
+        <h3>Diferenciais Pedagógicos</h3>
+        <p>
+          Experiência consolidada em ambiente corporativo (>19 anos), vivência pedagógica no ensino técnico, integração prática-teórica e uso de tecnologias emergentes (IA e automação) aplicadas ao ensino.</p>
+      </div>
+    </section>
+
+    <aside>
+      <div class="card section">
+        <h3>Contato</h3>
+        <div class="contact-list">
+          <div><strong>Endereço:</strong> Rua Carmelina Vieira Nascimento, 153 — Parque Santo Antônio, São Paulo - SP</div>
+          <div><strong>Telefone:</strong> (11) 95247-3590</div>
+          <div><strong>E-mail:</strong> <a href="mailto:alexsil51@yahoo.com.br">alexsil51@yahoo.com.br</a></div>
+          <a class="button" href="mailto:alexsil51@yahoo.com.br?subject=Contato%20via%20Portfólio">Enviar e-mail</a>
+          <a class="button" href="Alex-Gama-Silva-CV.pdf" style="background:#2b6a3a">Baixar CV (PDF)</a>
+        </div>
+      </div>
+
+      <div class="card section">
+        <h3>Serviços / Atuação</h3>
+        <ul>
+          <li>Formação técnica profissionalizante (redes, infraestrutura, desenvolvimento)</li>
+          <li>Consultoria em TI corporativa e automação</li>
+          <li>Projetos de integração entre teoria e prática para ensino técnico</li>
+        </ul>
+      </div>
+
+      <div class="card section">
+        <h3>Links Rápidos</h3>
+        <p class="muted">https://github.com/Alexsil51 - https://br.linkedin.com/in/alex-gama-silva-b06a9314b</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div>Portfólio gerado a partir do currículo — conteúdo referenciado do documento.</div>
+    <div style="margin-top:6px">© Alex Gama Silva</div>
+  </footer>
+</div>
+</body>
+</html>
