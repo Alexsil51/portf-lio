@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Gama Silva - Portfólio Profissional</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      top: -250px;
+      right: -250px;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      bottom: -150px;
+      left: -150px;
+      animation: float 8s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .hero-content {
+      text-align: center;
+      color: white;
+      z-index: 10;
+      position: relative;
+    }
+    
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      font-size: 80px;
+      font-weight: 800;
+      color: white;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: pulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero .subtitle {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .hero .contact-info {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+    }
+    
+    .hero .contact-info span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 20px;
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 30px;
+      background: white;
+      color: #667eea;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .social-links a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Main Content */
+    .main-content {
+      background: #f8f9fa;
+      border-radius: 50px 50px 0 0;
+      margin-top: -50px;
+      position: relative;
+      z-index: 20;
+      padding: 80px 20px;
+    }
+    
+    .section {
+      margin-bottom: 80px;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 50px;
+      color: #667eea;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 2px;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .stat-card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    }
+    
+    .stat-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #667eea;
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      font-size: 1rem;
+      color: #666;
+      font-weight: 600;
+    }
+    
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .skill-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .skill-item {
+      margin-bottom: 25px;
+    }
+    
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .skill-bar {
+      height: 10px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
+    
+    /* Tech Tags */
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    
+    .tech-tag {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .tech-tag:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* Experience Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 50px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, #667eea, #764ba2);
+    }
+    
+    .timeline-item {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -38px;
+      top: 30px;
+      width: 15px;
+      height: 15px;
+      background: #667eea;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px #667eea;
+    }
+    
+    .timeline-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .timeline-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #333;
+    }
+    
+    .timeline-badge {
+      padding: 6px 16px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    
+    .timeline-company {
+      color: #667eea;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .timeline-date {
+      color: #999;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    
+    .timeline-description {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    /* Education Cards */
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .education-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border-top: 4px solid #667eea;
+    }
+    
+    .education-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    }
+    
+    .education-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .education-degree {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    .education-institution {
+      color: #667eea;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .education-year {
+      color: #999;
+      font-size: 0.9rem;
+    }
+    
+    /* Chart Container */
+    .chart-container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+    
+    .chart-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .timeline {
+        padding-left: 30px;
+      }
+      
+      .timeline::before {
+        left: 10px;
+      }
+      
+      .timeline-item::before {
+        left: -28px;
+      }
+    }
+    
+    /* Scroll Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="profile-image">AG</div>
+      <h1>Alex Gama Silva</h1>
+      <p class="subtitle">Professor Técnico & Especialista em TI</p>
+      
+      <div class="contact-info">
+        <span>
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          São Paulo, SP
+        </span>
+        <span>
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          (11) 95247-3590
+        </span>
+        <span>
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          alexsil51@yahoo.com.br
+        </span>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://github.com/Alexsil51" target="_blank" rel="noopener noreferrer">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="https://br.linkedin.com/in/alex-gama-silva-b06a9314b" target="_blank" rel="noopener noreferrer">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="container">
+      
+      <!-- Stats Section -->
+      <section class="section fade-in">
+        <h2 class="section-title">Visão Geral</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">💼</div>
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Anos de Experiência</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🎓</div>
+            <div class="stat-number">4</div>
+            <div class="stat-label">Formações Técnicas</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">👨‍🏫</div>
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Anos em Docência</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🚀</div>
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Dedicação</div>
+          </div>
+        </div>
+        
+        <!-- Chart -->
+        <div class="chart-container">
+          <h3 class="chart-title">Áreas de Atuação</h3>
+          <canvas id="areaChart" style="max-height: 300px;"></canvas>
+        </div>
+      </section>
+      
+      <!-- Skills Section -->
+      <section class="section fade-in">
+        <h2 class="section-title">Competências</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: #667eea;">Competências Técnicas</h3>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Infraestrutura & Redes</span>
+                <span>95%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 95%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Administração de Sistemas</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Banco de Dados</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Power BI & Análise de Dados</span>
+                <span>88%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 88%;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-card">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: #667eea;">Competências Pedagógicas</h3>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Planejamento de Aulas</span>
+                <span>92%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 92%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Metodologias Ativas</span>
+                <span>88%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 88%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Avaliação Estudantil</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Integração Prática-Teórica</span>
+                <span>95%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 95%;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skill-card">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: #667eea;">Tecnologias Emergentes</h3>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>IA Aplicada</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Engenharia de Prompts</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Power Automate</span>
+                <span>87%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 87%;"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>Office 365</span>
+                <span>93%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 93%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tech Tags -->
+        <div class="tech-tags">
+          <span class="tech-tag">Infraestrutura & Redes</span>
+          <span class="tech-tag">Windows & Linux</span>
+          <span class="tech-tag">SQL Server & Oracle</span>
+          <span class="tech-tag">Office 365</span>
+          <span class="tech-tag">Power BI</span>
+          <span class="tech-tag">Power Automate</span>
+          <span class="tech-tag">IA Aplicada</span>
+          <span class="tech-tag">Prompts</span>
+          <span class="tech-tag">ERP/PMS</span>
+          <span class="tech-tag">Data Centers</span>
+          <span class="tech-tag">Wi-Fi Enterprise</span>
+        </div>
+      </section>
+      
+      <!-- Experience Section -->
+      <section class="section fade-in">
+        <h2 class="section-title">Experiência Profissional</h2>
+        <div class="timeline">      
+
+<div class="timeline-item">
+            <div class="timeline-header">
+              <h3 class="timeline-title">Técnico em Informática & Telecomunicações</h3>
+              <span class="timeline-badge">20+ anos</span>
+            </div>
+            <p class="timeline-company">Transamerica de Hotéis Nordeste Ltda</p>
+            <p class="timeline-date">10/2005 – Atual</p>
+            <p class="timeline-description">Suporte técnico corporativo, administração de infraestrutura em Data Center, implantação e manutenção de Sistemas ERP/PMS/BI, gestão de Office365, Power BI e automações.</p>
+          </div>
+
+<div class="timeline-item">
+            <div class="timeline-header">
+              <h3 class="timeline-title">Professor do Ensino Técnico</h3>
+              <span class="timeline-badge">Atual</span>
+            </div>
+            <p class="timeline-company">Secretaria da Educação do Estado de São Paulo - Rede Estadual</p>
+            <p class="timeline-date">2024 – Atual</p>
+            <p class="timeline-description">Ministração de disciplinas técnicas, desenvolvimento de planos de aula, metodologias ativas, avaliação e acompanhamento estudantil.</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3 class="timeline-title">Professor Eventual</h3>
+            </div>
+            <p class="timeline-company">Secretaria da Educação do Estado de São Paulo - Rede Estadual</p>
+            <p class="timeline-date">2022 – 2024</p>
+            <p class="timeline-description">Substituição docente, adaptação rápida a turmas e conteúdos, manutenção da continuidade pedagógica.</p>
+          </div>
+          
+          
+        </div>
+        
+        <div class="chart-container" style="margin-top: 50px;">
+          <h3 class="chart-title">Diferenciais Corporativo e Pedagógico</h3>
+          <p style="text-align: center; color: #666; line-height: 1.8; padding: 20px;">
+            Experiência consolidada em ambiente corporativo (20+ anos), vivência pedagógica no Ensino Técnico, integração prática-teórica e uso de tecnologias emergentes (IA e automação) aplicadas ao ensino e Mercado de Trabalho.
+          </p>
+        </div>
+      </section>
+      
+      <!-- Education Section -->
+      <section class="section fade-in">
+        <h2 class="section-title">Formação Acadêmica</h2>
+        <div class="education-grid">
+          
+           <div class="education-card">
+            <div class="education-icon">🎓</div>
+            <h3 class="education-degree">Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
+            <p class="education-institution">Centro Universitário SENAC São Paulo</p>
+            </div>
+
+          <div class="education-card">
+            <div class="education-icon">🎓</div>
+            <h3 class="education-degree">Tecnólogo em Redes de Computadores</h3>
+            <p class="education-institution">Centro Universitário SENAC São Paulo</p>
+            </div>
+          
+<div class="education-card">
+            <div class="education-icon">🎓</div>
+            <h3 class="education-degree">Técnico em Informática</h3>
+            <p class="education-institution">SENAC São Paulo</p>
+            </div>
+
+         
+          
+          <div class="education-card">
+            <div class="education-icon">🎓</div>
+            <h3 class="education-degree">Técnico em Eletrotécnica</h3>
+            <p class="education-institution">Escola Nossa Senhora de Fátima</p>
+            </div>
+        </div>
+      </section>
+      
+    </div>
+  </div>
+  
+  <script>
+    // Scroll Animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    
+    // Chart
+    const ctx = document.getElementById('areaChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Infraestrutura', 'Docência', 'Administração', 'Desenvolvimento'],
+        datasets: [{
+          data: [35, 25, 20, 20],
+          backgroundColor: [
+            '#667eea',
+            '#764ba2',
+            '#f093fb',
+            '#f5576c'
+          ],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              padding: 20,
+              font: {
+                size: 14,
+                family: 'Poppins'
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
